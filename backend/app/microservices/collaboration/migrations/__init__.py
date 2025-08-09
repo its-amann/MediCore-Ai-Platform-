@@ -1,0 +1,3 @@
+"""
+Collaboration microservice database migrations
+"""

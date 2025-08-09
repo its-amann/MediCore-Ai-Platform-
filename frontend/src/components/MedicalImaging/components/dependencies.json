@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0",
+    "react-syntax-highlighter": "^15.5.0",
+    "jspdf": "^2.5.1",
+    "html2canvas": "^1.4.1",
+    "jszip": "^3.10.1",
+    "file-saver": "^2.0.5",
+    "date-fns": "^3.0.0",
+    "@mui/x-date-pickers": "^6.19.0",
+    "framer-motion": "^11.0.0",
+    "lucide-react": "^0.311.0"
+  },
+  "installCommand": "npm install react-markdown remark-gfm react-syntax-highlighter jspdf html2canvas jszip file-saver date-fns @mui/x-date-pickers framer-motion lucide-react"
+}

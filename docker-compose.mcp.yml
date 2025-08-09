@@ -1,0 +1,91 @@
+version: '3.8'
+
+services:
+  neo4j:
+    image: neo4j:5-community
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_AUTH=neo4j/password
+      - NEO4J_PLUGINS=["apoc"]
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+    networks:
+      - medical-ai-network
+    healthcheck:
+      test: ["CMD", "wget", "-O", "-", "http://localhost:7474"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  mcp-server:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: python start_mcp_server.py
+    ports:
+      - "3030:3030"
+    environment:
+      - NEO4J_URI=bolt://neo4j:7687
+      - NEO4J_USER=neo4j
+      - NEO4J_PASSWORD=password
+      - MCP_SERVER_HOST=0.0.0.0
+      - MCP_SERVER_PORT=3030
+      - MCP_REQUIRE_AUTH=False
+      - MCP_JWT_SECRET=${MCP_JWT_SECRET:-your-secret-key-here}
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    networks:
+      - medical-ai-network
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - NEO4J_URI=bolt://neo4j:7687
+      - NEO4J_USER=neo4j
+      - NEO4J_PASSWORD=password
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-your-secret-key-here}
+      - MCP_SERVER_ENABLED=True
+      - MCP_SERVER_HOST=mcp-server
+      - MCP_SERVER_PORT=3030
+    depends_on:
+      neo4j:
+        condition: service_healthy
+      mcp-server:
+        condition: service_started
+    networks:
+      - medical-ai-network
+    volumes:
+      - ./backend/media:/app/media
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8080
+    depends_on:
+      - backend
+    networks:
+      - medical-ai-network
+    restart: unless-stopped
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
+
+networks:
+  medical-ai-network:
+    driver: bridge

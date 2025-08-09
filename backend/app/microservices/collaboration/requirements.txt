@@ -1,0 +1,61 @@
+# Collaboration Microservice Requirements
+
+# Core Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# Database
+neo4j==5.14.0
+motor==3.3.2  # For MongoDB if needed as secondary storage
+
+# WebSocket Support
+websockets==12.0
+python-socketio==5.10.0
+python-multipart==0.0.6
+
+# Authentication & Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-dotenv==1.0.0
+
+# HTTP Client
+httpx==0.25.2
+aiohttp==3.9.1
+
+# Redis (for pub/sub and caching)
+redis==5.0.1
+aioredis==2.0.1
+
+# Utilities
+asyncio==3.4.3
+typing-extensions==4.8.0
+python-dateutil==2.8.2
+
+# Logging and Monitoring
+structlog==23.2.0
+prometheus-client==0.19.0
+
+# Testing (optional, for development)
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+httpx[http2]==0.25.2  # For testing
+
+# AI Integration (if using OpenAI or similar)
+openai==1.6.1
+langchain==0.0.350
+
+# File handling
+python-magic==0.4.27
+aiofiles==23.2.1
+
+# WebRTC support libraries
+aiortc==1.5.0  # For WebRTC functionality
+
+# Development tools (optional)
+black==23.12.0
+isort==5.13.2
+flake8==6.1.0
+mypy==1.7.1

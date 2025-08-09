@@ -1,0 +1,75 @@
+# Core FastAPI and async web framework
+fastapi
+uvicorn[standard]
+python-multipart
+httpx
+
+# Authentication and security
+python-jose[cryptography]
+passlib[bcrypt]
+cryptography
+
+# Database drivers
+neo4j
+motor
+pymongo
+
+# Pydantic for data validation
+pydantic
+pydantic-settings
+
+# AI/ML Libraries
+google-generativeai
+openai
+anthropic
+groq
+
+# Core utilities
+numpy
+pandas
+
+# Image processing
+Pillow
+opencv-python
+
+# Medical imaging
+pydicom
+imageio
+
+# WebSocket and async
+websockets
+aiofiles
+aiohttp
+
+# Utilities
+python-dotenv
+requests
+email-validator
+python-dateutil
+pytz
+
+# Logging
+loguru
+colorama
+
+# Serialization
+pyyaml
+orjson
+
+# Performance
+psutil
+
+# Rate limiting
+slowapi
+
+# Documentation
+jinja2
+
+# Additional core dependencies
+click
+typing-extensions
+certifi
+urllib3
+idna
+packaging
+tqdm

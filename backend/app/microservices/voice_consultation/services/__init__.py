@@ -1,0 +1,1 @@
+# Voice Consultation Services - Simplified Implementation

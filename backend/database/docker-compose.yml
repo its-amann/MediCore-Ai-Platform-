@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  neo4j:
+    image: neo4j:5.15-community
+    container_name: medical-ai-neo4j
+    ports:
+      - "7474:7474"  # HTTP
+      - "7687:7687"  # Bolt
+    environment:
+      - NEO4J_AUTH=neo4j/medical123
+      - NEO4J_dbms_memory_pagecache_size=1G
+      - NEO4J_dbms.memory.heap.initial_size=1G
+      - NEO4J_dbms_memory_heap_max__size=1G
+      - NEO4J_dbms_connector_bolt_enabled=true
+      - NEO4J_dbms_connector_http_enabled=true
+      - NEO4J_dbms_connector_https_enabled=false
+      - NEO4J_dbms_default__listen__address=0.0.0.0
+      - NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*
+      - NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.*
+    volumes:
+      - ./docker-data/neo4j/data:/data
+      - ./docker-data/neo4j/logs:/logs
+      - ./neo4j/init:/init
+    networks:
+      - medical-ai-network
+    healthcheck:
+      test: ["CMD", "neo4j", "status"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 40s
+
+  redis:
+    image: redis:7-alpine
+    container_name: medical-ai-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning --logfile /logs/redis.log
+    volumes:
+      - ./docker-data/redis/data:/data
+      - ./docker-data/redis/logs:/logs
+    networks:
+      - medical-ai-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+networks:
+  medical-ai-network:
+    driver: bridge
