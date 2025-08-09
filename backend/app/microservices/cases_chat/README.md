@@ -21,7 +21,13 @@ The Cases Chat microservice is a sophisticated AI-powered medical consultation s
 
 ![alt text](image-1.png)
 
-![Archetecture](image.png)
+### Create New Case
+
+![alt text](image-7.png)
+
+### See Previous Case
+
+![alt text](image-8.png)
 
 ### Directory Structure
 

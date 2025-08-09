@@ -100,6 +100,9 @@
 
 ---
 
+![alt text](image-9.png)
+
+
 ## 💾 Database Architecture
 
 ### Neo4j Graph Database Structure
@@ -121,6 +124,8 @@
 ![alt text](image-5.png)
 
 </div>
+
+![alt text](image-10.png)
 
 #### 🌟 MCP Server Integration
 
@@ -149,6 +154,13 @@ The **Medical Context Protocol (MCP) Server** is a groundbreaking feature that p
 ![alt text](image-6.png)
 
 </div>
+
+![alt text](image-11.png)
+
+
+#### Reports 
+
+![alt text](image-12.png)
 
 #### 🚦 Intelligent API Limit Handler
 
@@ -181,6 +193,8 @@ FALLBACK_CHAIN = ["gemini_pro", "groq_mixtral", "openrouter_medical"]
 ![alt text](image-7.png)
 
 </div>
+
+![alt text](image-13.png)
 
 #### 🚧 In Progress Features
 
@@ -528,10 +542,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
   
-  **Built with ❤️ by the MediCore AI Team**
+  **Built with ❤️ by the Aman**
   
-  [Website](https://medicore.ai) • [Documentation](./docs) • [Support](mailto:support@medicore.ai)
+  [Linkedin](https://www.linkedin.com/in/aman-agnihotri004/) • [Documentation](./docs) • [Support](amanagnihotri902@gmail.com)
   
-  ⭐ Star us on GitHub!
+  ⭐ Star me on GitHub!
   
 </div>

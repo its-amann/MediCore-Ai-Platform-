@@ -31,6 +31,21 @@ The Medical Imaging Microservice is a sophisticated AI-powered system designed f
 ### High-Level Architecture Diagram
 ![alt text](image-2.png)
 
+
+### UI 
+
+![alt text](image-9.png)
+
+### View Previous Reports 
+
+![alt text](image-10.png)
+
+There is some ui issuses , I am Fixing them
+
+### Report 
+
+![alt text](image-11.png)
+
 ## 🔧 Core Components
 
 ### 1. **Workflow Management**
